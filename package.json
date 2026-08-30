@@ -1,0 +1,9 @@
+{
+  "name": "gbrain-code-structural-extractor",
+  "private": true,
+  "version": "0.1.0",
+  "description": "TypeScript compiler dependency for GBrain Code indexing",
+  "dependencies": {
+    "typescript": "5.9.2"
+  }
+}
