@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "description": "Frozen executable scenarios for equal-budget impact scheduling.",
+  "budget": 2,
+  "trials": 2000,
+  "cases": [
+    {
+      "id": "deleted-normalizer",
+      "fixture": "cases/deleted-normalizer",
+      "expected_introduced_failures": ["planner-normalization"],
+      "scenarios": [
+        {
+          "id": "accounts-rounding",
+          "path": "test/accounts.test.js",
+          "command": ["node", "--test", "test/accounts.test.js"]
+        },
+        {
+          "id": "documents-title",
+          "path": "test/documents.test.js",
+          "command": ["node", "--test", "test/documents.test.js"]
+        },
+        {
+          "id": "inventory-floor",
+          "path": "test/inventory.test.js",
+          "command": ["node", "--test", "test/inventory.test.js"]
+        },
+        {
+          "id": "payroll-hours",
+          "path": "test/payroll.test.js",
+          "command": ["node", "--test", "test/payroll.test.js"]
+        },
+        {
+          "id": "planner-normalization",
+          "path": "test/planner.test.js",
+          "command": ["node", "--test", "test/planner.test.js"]
+        },
+        {
+          "id": "reports-label",
+          "path": "test/reports.test.js",
+          "command": ["node", "--test", "test/reports.test.js"]
+        }
+      ]
+    }
+  ]
+}

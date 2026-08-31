@@ -12,7 +12,11 @@ const tracked = execFileSync(
   { encoding: "utf8" },
 )
   .trim().split("\n").filter(Boolean)
-  .filter((item) => /\.(?:tsx?|mts|cts|jsx?|mjs|cjs)$/.test(item));
+  .filter((item) => /\.(?:tsx?|mts|cts|jsx?|mjs|cjs)$/.test(item))
+  // `git ls-files --cached` retains deleted paths until they are staged. A
+  // working-tree audit must index the files that still exist instead of
+  // crashing before it can compare the deletion with its persisted T0.
+  .filter((item) => fs.existsSync(path.join(repo, item)));
 const trackedSet = new Set(tracked);
 const symbols = [];
 const edges = [];

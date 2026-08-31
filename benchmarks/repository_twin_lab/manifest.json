@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "description": "Controlled structural-delta cases for the dual-snapshot Repository Twin.",
+  "cases": [
+    {
+      "id": "deleted-export",
+      "split": "development",
+      "fixture": "cases/deleted-export",
+      "expectations": {
+        "file_changes": [
+          {"change": "removed", "path": "src/helper.ts"}
+        ],
+        "symbol_changes": [
+          {"change": "removed", "name": "normalizeOrder"}
+        ],
+        "edge_changes": [
+          {
+            "change": "removed",
+            "source_path": "src/service.ts",
+            "relation": "calls",
+            "target_path": "src/helper.ts"
+          }
+        ],
+        "impact_paths": ["src/service.ts", "tests/service.test.ts"],
+        "current_only_miss_paths": ["src/service.ts"]
+      }
+    },
+    {
+      "id": "return-contract",
+      "split": "development",
+      "fixture": "cases/return-contract",
+      "expectations": {
+        "symbol_changes": [
+          {"change": "modified", "name": "buildDiagnostics"}
+        ],
+        "impact_paths": ["src/planner.ts", "tests/diagnostics.test.ts"]
+      }
+    },
+    {
+      "id": "rename-api",
+      "split": "evaluation",
+      "fixture": "cases/rename-api",
+      "expectations": {
+        "symbol_changes": [
+          {"change": "removed", "name": "calculateTotal"},
+          {"change": "added", "name": "calculateSubtotal"}
+        ],
+        "identity_candidates": [
+          {
+            "change": "rename_candidate",
+            "before_name": "calculateTotal",
+            "after_name": "calculateSubtotal"
+          }
+        ],
+        "impact_paths": ["tests/invoice.test.ts"]
+      }
+    },
+    {
+      "id": "removed-rpc-definition",
+      "split": "evaluation",
+      "fixture": "cases/removed-rpc-definition",
+      "expectations": {
+        "symbol_changes": [
+          {"change": "removed", "name": "public.get_orders"}
+        ],
+        "edge_changes": [
+          {
+            "change": "removed",
+            "source_path": "src/orders.ts",
+            "relation": "calls_rpc",
+            "target_path": "migrations/001_orders.sql"
+          }
+        ],
+        "impact_paths": ["src/orders.ts", "tests/orders.test.ts"],
+        "current_only_miss_paths": ["src/orders.ts"]
+      }
+    },
+    {
+      "id": "new-rpc-contract",
+      "split": "evaluation",
+      "fixture": "cases/new-rpc-contract",
+      "expectations": {
+        "symbol_changes": [
+          {"change": "added", "name": "public.get_order_summary"}
+        ],
+        "edge_changes": [
+          {
+            "change": "added",
+            "source_path": "src/orders.ts",
+            "relation": "calls_rpc",
+            "target_name": "public.get_order_summary"
+          }
+        ],
+        "impact_paths": ["tests/orders.test.ts"]
+      }
+    }
+  ]
+}

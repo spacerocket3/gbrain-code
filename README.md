@@ -144,9 +144,34 @@ when a task is large enough to justify cartography.
 - [Architecture](docs/ARCHITECTURE.md)
 - [Prior art and boundaries](docs/PRIOR_ART.md)
 - [Evaluation protocol](docs/EVALUATION.md)
+- [Reactive Repository State experiment](docs/REACTIVE_REPOSITORY_STATE.md)
+- [Dual-snapshot Repository Twin Lab](docs/REPOSITORY_TWIN_LAB.md)
+- [Executable Impact Simulation Lab](docs/EXECUTABLE_IMPACT_SIMULATION_LAB.md)
 
-The repository includes a small file-retrieval evaluator. It is not presented as
-a scientific result; it exists so claims can be tested instead of repeated.
+The repository includes file-retrieval evaluators, experimental impact
+propagation, a dual-snapshot Repository Twin and an equal-budget executable
+scheduling lab. The Twin preserves relationships removed by a change and emits
+source-cited review candidates instead of presenting graph paths as causal
+impact. All reactive components remain outside the MCP surface.
+
+The Repository Twin experiment additionally compares normalized `T0` and `T1`
+graphs so a post-change audit can retain relationships deleted by the diff. Its
+controlled microrepository proves that mechanical capability. A single
+exploratory same-model agent pilot also produced a better frozen-test outcome
+with the Twin packet, but is explicitly reported as `n=1`, synthetic and not
+causal evidence.
+
+The executable scheduling lab takes one additional step: it uses the Twin
+ranking to allocate an equal budget of real differential checks. Its first
+public synthetic case improves regression discovery from 35.1% under seeded
+general scheduling to 100%, while explicitly making no GPU, model or general
+benchmark claim.
+
+This publication stops at faithful structural evidence and executable
+verification. It does not include automatic semantic translation, model
+consultation, autonomous editing or a claim that the graph can decide which
+code must change. Those are separate research questions, not hidden product
+features.
 
 ## Status
 
