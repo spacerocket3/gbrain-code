@@ -157,6 +157,24 @@ Required baselines:
 - GBrain map only;
 - GBrain pre-map plus post-diff audit.
 
+### 7.1 Research direction: reactive repository state
+
+An experimental layer asks whether a diff should produce a changing impact
+distribution over the repository graph rather than only a retrieved subgraph.
+It holds personalized PageRank constant while ablating topology, relation types,
+shared resources and SQL temporal/authority state.
+
+Initial evidence is mixed. On a 14-sample, language-supported slice of ARB
+`edit2ripple`, the current question map outperformed pure reactive propagation.
+On a small private parent-snapshot co-change pilot, reactive propagation was much
+stronger on cross-layer and lexical-miss cases. The latter is promising but not
+independently reproducible and does not establish causal impact.
+
+The experiment, formulas, exact aggregate results and falsification criteria are
+documented in [REACTIVE_REPOSITORY_STATE.md](REACTIVE_REPOSITORY_STATE.md). It
+will not enter the MCP surface unless larger public tests show value beyond the
+existing cartographer.
+
 ## 8. Safety and privacy
 
 Repositories are registered explicitly and indexed locally. Secrets, private

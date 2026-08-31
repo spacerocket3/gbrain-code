@@ -27,6 +27,32 @@ completion, demonstrating that relevant context is often scattered across files.
 GBrain Code is generation-independent and targets engineering task context rather
 than fill-in-the-middle completion.
 
+## CodePlan and change-aware planning
+
+Microsoft's CodePlan frames repository-level editing as an adaptive plan driven
+by incremental dependency analysis and change may-impact analysis. This is a
+close precedent for using a concrete change to schedule further repository
+inspection and edits.
+
+- Paper: https://www.microsoft.com/en-us/research/publication/codeplan-repository-level-coding-using-llms-and-planning/
+- Source: https://github.com/microsoft/CodePlan
+
+The experimental Impact Field is narrower: it ranks source-cited review
+candidates after a diff and does not autonomously plan or edit. A bounded local
+value-flow side experiment is retained as a documented negative result.
+
+## Code Property Graphs
+
+Code Property Graphs combine syntax, control flow and data flow in a typed graph
+and are a mature foundation for program analysis.
+
+- Specification: https://cpg.joern.io/
+- Joern documentation: https://docs.joern.io/code-property-graph/
+
+GBrain's production graph is not a Code Property Graph. The experimental local
+slice only follows a small subset of TypeScript value relationships and must not
+be described as complete data-flow analysis.
+
 ## RepoFormer
 
 RepoFormer studies selective retrieval and whether repository context is useful
@@ -76,6 +102,45 @@ files. Its `edit2ripple` task is especially aligned with post-diff cartography.
 The benchmark is not vendored here. The local evaluation adapter accepts a
 normalized JSONL representation so downloaded releases remain separately
 licensed artifacts.
+
+## Athena and software change-impact analysis
+
+Change-impact analysis is an established software-maintenance field. Athena
+combines program-dependence graphs with Transformer-based conceptual coupling
+and evaluates against Alexandria, a benchmark derived from bug-fix commits.
+This is the closest research neighbor to the Reactive Repository State
+experiment; graph propagation or graph-plus-semantics must not be described as
+new by itself.
+
+- Paper: https://arxiv.org/abs/2607.23355
+
+GBrain's experiment is currently narrower and weaker: file-level static
+relationships, explicit SQL temporal lineage and human-readable paths, with no
+trained impact model.
+
+## Persistent commercial code graphs
+
+Helixor Code describes persistent, structurally indexed repository context and
+team memory exposed to coding tools. Its product framing overlaps GBrain's
+"living map" motivation.
+
+- Product page: https://helixor.ai/code/
+
+Public product descriptions are not enough to infer implementation details or
+benchmark equivalence. This entry records concept proximity only.
+
+## Software digital twins
+
+NTT describes software digital twins built from source code and execution logs
+to reproduce internal software conditions and predict areas needing revision.
+The broad idea of a synchronized software representation therefore predates
+GBrain.
+
+- Research overview: https://www.rd.ntt/e/research/JN202312_24212.html
+
+Reactive Repository State is not presented as a software digital twin. It does
+not simulate runtime state; it ranks possible repository ripple paths from an
+observed edit.
 
 ## Provenance of this implementation
 
